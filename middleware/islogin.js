@@ -1,8 +1,8 @@
 function islogin(req,res,next) {
-    if (req.sesion.user.id) {
-        next()
-    } else {
+    if (!req.session.user) {
         res.redirect('/access/login')
+    } else {
+        next()
     }
 }
 
