@@ -3,7 +3,7 @@ const VotingController = require('../../controllers/VotingController')
 
 router.get('/main',VotingController.homepage)
 
-router.post('/voting/:ArtistCategoryId', VotingController.vote)
+router.post('/:ArtistCategoryId/:userId', VotingController.vote)
 
 module.exports = router
 
