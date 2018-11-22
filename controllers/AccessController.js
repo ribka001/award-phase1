@@ -9,26 +9,19 @@ class AccessController {
     }
     
     static register(req,res) {
-        const saltRounds = 10
-        bcrypt.hash(req.body.password,saltRounds)
-            .then((hash) => {
-                let dataUser = {
-                    username: req.body.username,
-                    email: req.body.email,
-                    age:req.body.age,
-                    password: hash,
-                    createdAt:new Date,
-                    updatedAt:new Date
-                }
-                User
-                .create(dataUser)
-                    .then(() => {
-                        // res.send(dataUser)
-                        res.redirect('/access/login')
-                    })
-                    .catch((err) => {
-                        res.send(err)
-                    })
+        let dataUser = {
+            username: req.body.username,
+            email: req.body.email,
+            age:req.body.age,
+            password: req.body.password,
+            createdAt:new Date,
+            updatedAt:new Date
+        }
+        User
+        .create(dataUser)
+            .then(() => {
+                // res.send(dataUser)
+                res.redirect('/access/login')
             })
             .catch((err) => {
                 res.send(err)
@@ -42,13 +35,17 @@ class AccessController {
     static login(req,res) {
         User.findOne({where:{email:req.body.email}})
             .then((data) => {
-                bcrypt.compare(req.body.password,data.password)
-                    .then(() => {
-                        res.redirect('/')
-                    })
-                    .catch(err => {
-                        res.send(err)
-                    })
+                if (bcrypt.compareSync(req.body.password,data.password)) {
+                    req.session.user = {
+                        id: data.id,
+                        username: data.username,
+                        email: req.body.email
+                    }
+                    // res.send(`masuk`)
+                    res.redirect('/')
+                } else {
+                    res.redirect('/access/login')
+                }
             })
             .catch((err) => {
                 res.send(err)
