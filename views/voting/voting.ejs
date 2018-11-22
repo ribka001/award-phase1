@@ -32,7 +32,7 @@
         <tr>    
             <% cat1.forEach(item => { %>
                 <td> 
-                    <form action="/voting/<%= item.id%>" method="post">
+                    <form action="/voting/<%= item.id%>/1" method="post">
                     <button type="submit"><%= item.Artist.name %></button>
                     </form> 
                 </td>
@@ -42,7 +42,7 @@
         <tr>    
             <% cat2.forEach(item => { %>
                 <td> 
-                    <form action="/voting/<%= item.id %>" method="post">
+                    <form action="/voting/<%= item.id %>/2" method="post">
                     <button type="submit"><%= item.Artist.name %></button>
                     </form> 
                 </td>
@@ -53,7 +53,7 @@
         <tr>    
             <% cat3.forEach(item => { %>
                 <td> 
-                    <form action="/voting/<%= item.id %>" method="post">
+                    <form action="/voting/<%= item.id %>/3" method="post">
                     <button type="submit"><%= item.Artist.name %></button>
                     </form> 
                 </td>
@@ -64,7 +64,7 @@
         <tr>    
             <% cat4.forEach(item => { %>
                 <td> 
-                    <form action="/voting/<%= item.id %>" method="post">
+                    <form action="/voting/<%= item.id %>/4" method="post">
                     <button type="submit"><%= item.Artist.name %></button>
                     </form> 
                 </td>

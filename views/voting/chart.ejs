@@ -10,7 +10,7 @@
     <title>Chart</title>
 </head>
 <body align = center>
-    <canvas id="myChart"> </canvas>
+    <canvas id="myChart" width=400> </canvas>
     <script>
         var ctx = document.getElementById("myChart").getContext('2d')
         var myChart = new Chart(ctx, {
@@ -18,6 +18,9 @@
             data: <%- JSON.stringify(data) %>
         });
     </script>
+
+    <h3><a href="/">Homepage</a></h2>
+    <h3><a href="/voting">Voting</a></h2>
 
 </body>
 </html>
