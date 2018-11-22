@@ -4,9 +4,9 @@ const islogin = require('../../middleware/islogin')
 
 router.get('/',VotingController.homepage)
 
-router.post('/:ArtistCategoryId',islogin, VotingController.vote)
+router.post('/:ArtistCategoryId/:catId',islogin, VotingController.vote)
 
-router.get('/chart', VotingController.chart1)
+router.get('/chart/:id', VotingController.chart)
 
 module.exports = router
 

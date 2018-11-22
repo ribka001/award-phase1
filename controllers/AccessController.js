@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 class AccessController {
     
     static showRegister(req,res) {
-        res.render('access/register.ejs')
+        res.render('access/register.ejs', {title: "register"})
     }
     
     static register(req,res) {
@@ -21,7 +21,7 @@ class AccessController {
         .create(dataUser)
             .then(() => {
                 // res.send(dataUser)
-                res.redirect('/access/login')
+                res.redirect('/access/login', {title: "login"})
             })
             .catch((err) => {
                 res.send(err)
@@ -29,14 +29,14 @@ class AccessController {
     }
 
     static showLogin(req,res) {
-        res.render('access/login.ejs')
+        res.render('access/login.ejs', {title: "login"})
     }
 
     static login(req,res) {
         User.findOne({where:{email:req.body.email}})
             .then((data) => {
                 if (!data) {
-                    res.redirect('/access/login')
+                    res.redirect('/access/login', {title: "login"})
                 } else {
                     if (bcrypt.compareSync(req.body.password,data.password)) {
                         req.session.user = {
@@ -47,7 +47,7 @@ class AccessController {
                         // res.send(req.session.user)
                         res.redirect('/voting')
                     } else {
-                    res.redirect('/access/login')
+                    res.redirect('/access/login', {title: "login"})
                     }
                     
                 }
