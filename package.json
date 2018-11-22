@@ -1,0 +1,27 @@
+{
+  "name": "award-phase1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ribka001/award-phase1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ribka001/award-phase1/issues"
+  },
+  "homepage": "https://github.com/ribka001/award-phase1#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6",
+    "pg": "^7.6.1",
+    "sequelize": "^4.41.2",
+    "sequelize-cli": "^5.3.0"
+  }
+}
