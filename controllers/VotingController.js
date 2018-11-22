@@ -57,7 +57,7 @@ class Voting {
             })
     }
 
-    static chart() {
+    // static chart() {
     //     Promise.all([
     //         ArtistCategoryId.findAll(
     //             {
@@ -126,6 +126,34 @@ class Voting {
     //             res.send(err)
     //         })
             
+    // }
+
+    static chart1(req, res) {
+        Vote.findAll(
+            {   
+                include: [{ model:ArtistCategory, include: [{ model:Artist }] }]
+            }
+        )
+            .then(data => {
+
+                let list = data.filter(item => {
+                    return item.ArtistCategory.CategoryId == 1
+                })
+
+                return list
+            })
+            .then(values => {
+                values.findAll({
+                    group: [values.ArtistCategory.Artist.name],
+                    attributes: [values.ArtistCategory.Artist.name, [sequelize.fn('COUNT', values.ArtistCategory.Artist.name), 'TagCount']],
+                })
+            })
+            .then(results => {
+                res.send(results)
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
     
 }

@@ -5,8 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     ArtistcategoryId: DataTypes.INTEGER
   }, {});
   Vote.associate = function(models) {
-    // associations can be defined here
-    Vote.belongsTo(models.ArtistCategory)
+    Vote.belongsTo(models.ArtistCategory, {foreignKey: 'ArtistcategoryId'})
   };
 
   return Vote;
