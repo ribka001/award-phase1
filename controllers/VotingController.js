@@ -49,7 +49,7 @@ class Voting {
             ArtistcategoryId: req.params.ArtistCategoryId
         })
             .then(data => {
-                res.redirect('/voting/main')
+                res.redirect('voting/')
             })
             .catch(err => {
                 res.send(err)
