@@ -5,11 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     age: DataTypes.INTEGER,
-    salt: DataTypes.INTEGER
+    salt: DataTypes.STRING,
   }, {});
   User.associate = function(models) {
     // associations can be defined here
-    User.hasMany(models.Vote)
   };
   return User;
 };
