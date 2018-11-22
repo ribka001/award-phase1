@@ -35,16 +35,21 @@ class AccessController {
     static login(req,res) {
         User.findOne({where:{email:req.body.email}})
             .then((data) => {
-                if (bcrypt.compareSync(req.body.password,data.password)) {
-                    req.session.user = {
-                        id: data.id,
-                        username: data.username,
-                        email: req.body.email
-                    }
-                    // res.send(`masuk`)
-                    res.redirect('/')
-                } else {
+                if (!data) {
                     res.redirect('/access/login')
+                } else {
+                    if (bcrypt.compareSync(req.body.password,data.password)) {
+                        req.session.user = {
+                            id: data.id,
+                            username: data.username,
+                            email: req.body.email
+                        }
+                        // res.send(req.session.user)
+                        res.redirect('/voting')
+                    } else {
+                    res.redirect('/access/login')
+                    }
+                    
                 }
             })
             .catch((err) => {

@@ -48,7 +48,7 @@ class Voting {
             UserId: req.session.user.id,
             ArtistcategoryId: req.params.ArtistCategoryId
         })
-            .then(data => {
+            .then((data) => {
                 // req.flash('success_msg', 'Thank you for voting!')
                 res.redirect('/')
             })

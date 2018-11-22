@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Vote.associate = function(models) {
     // associations can be defined here
-    // Vote.hasMany(models.User)
-    Vote.hasMany(models.ArtistCategory)
+    Vote.belongsTo(models.ArtistCategory)
   };
+
   return Vote;
 };
