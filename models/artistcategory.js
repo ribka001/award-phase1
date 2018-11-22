@@ -5,9 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     ArtistId: DataTypes.INTEGER
   }, {});
   ArtistCategory.associate = function(models) {
-    // associations can be defined here
+    ArtistCategory.hasMany(models.Artist)
+
     // ArtistCategory.hasMany(models.Category)
-    ArtistCategory.belongsTo(models.Artist)
+    // ArtistCategory.hasMany(models.Vote)
   };
   return ArtistCategory;
 };
