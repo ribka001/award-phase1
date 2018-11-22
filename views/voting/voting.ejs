@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <title>Main Vote Area</title>
+</head>
+<body align = center>
+    <h1> Choose Your Favorite !</h1><br>
+
+    <h2>Artist of the Year</h2>
+    <table>
+        <tr>    
+            <% cat1.forEach(item => { %>
+                <td> 
+                    <form action="/voting/<%= item.id %>" method="post">
+                    <button type="submit"><%= item.Artist.name %></button>
+                    </form> 
+                </td>
+            <% }) %>
+        </tr>
+    </table><br>
+
+    <h2>Best Solo Singer</h2>
+    <table>
+            <tr>    
+                <% cat2.forEach(item => { %>
+                    <td> 
+                        <form action="/voting/<%= item.id %>" method="post">
+                        <button type="submit"><%= item.Artist.name %></button>
+                        </form> 
+                    </td>
+                <% }) %>
+            </tr>
+    </table><br>
+
+    <h2>Best Group</h2>
+    <table>
+            <tr>    
+                <% cat3.forEach(item => { %>
+                    <td> 
+                        <form action="/voting/<%= item.id %>" method="post">
+                        <button type="submit"><%= item.Artist.name %></button>
+                        </form> 
+                    </td>
+                <% }) %>
+            </tr>
+    </table><br>
+
+    <h2>Best Dance Performance</h2>
+    <table>
+            <tr>    
+                <% cat4.forEach(item => { %>
+                    <td> 
+                        <form action="/voting/<%= item.id %>" method="post">
+                        <button type="submit"><%= item.Artist.name %></button>
+                        </form> 
+                    </td>
+                <% }) %>
+            </tr>
+    </table><br>
+
+    <h2>Best New Artist</h2>
+    <table>
+            <tr>    
+                <% cat5.forEach(item => { %>
+                    <td> 
+                        <form action="/voting/<%= item.id %>" method="post">
+                        <button type="submit"><%= item.Artist.name %></button>
+                        </form> 
+                    </td>
+                <% }) %>
+            </tr>
+    </table><br>
+    
+</body>
+</html>
