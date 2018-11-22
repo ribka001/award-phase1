@@ -57,6 +57,7 @@ class Voting {
             })
     }
 
+    
     static chart() {
     //     Promise.all([
     //         ArtistCategoryId.findAll(

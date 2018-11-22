@@ -4,8 +4,26 @@ const bcrypt = require('bcrypt')
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
+    email:{type:DataTypes.STRING,
+    validate:{
+      isEmail:{
+        args:true,
+        msg:"input must be an email"
+      }
+    }
+    },
+    password:{type:DataTypes.STRING,
+      validate:{
+        notNull:{
+          args:true,
+          msg:"must be fill"
+        },
+        len:{
+          args:[4,10],
+          msg:"length beetween 4 and 10"
+        }
+      }
+    },
     age: DataTypes.INTEGER,
     salt: DataTypes.STRING,
   }, {
@@ -21,6 +39,19 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Vote)
   };
 
+  User.isUniqueEmail = function(input) {
+    return new Promise(function(resolve,reject) {
+      User.findOne({where:{
+        email:input
+      }})
+        .then(data => {
+          resolve(data)
+        })
+        .catch(err => {
+          reject(err)
+        })
+    })
+  }
   // User.readEncrypt = function(input,password) {
     // return bcrypt.compareSync(input,password)
   // }
