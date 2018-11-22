@@ -49,7 +49,8 @@ class Voting {
             ArtistcategoryId: req.params.ArtistCategoryId
         })
             .then(data => {
-                res.redirect('voting/')
+                // req.flash('success_msg', 'Thank you for voting!')
+                res.redirect('/')
             })
             .catch(err => {
                 res.send(err)
