@@ -6,6 +6,7 @@ router.get('/',VotingController.homepage)
 
 router.post('/:ArtistCategoryId',islogin, VotingController.vote)
 
+
 router.get('/chart', VotingController.chart1)
 
 module.exports = router

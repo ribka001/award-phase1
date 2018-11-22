@@ -1,4 +1,4 @@
-const { ArtistCategory, Artist, Vote } = require('../models')
+const { ArtistCategory, Artist, Vote, Category } = require('../models')
 
 class Voting {
 
@@ -44,12 +44,13 @@ class Voting {
     }
 
     static vote(req,res) {
+        
         Vote.create({
             UserId: req.session.user.id,
             ArtistcategoryId: req.params.ArtistCategoryId
         })
             .then((data) => {
-                // req.flash('success_msg', 'Thank you for voting!')
+                req.flash('success_msg', 'Thank you for voting!')
                 res.redirect('/')
             })
             .catch(err => {
