@@ -9,22 +9,29 @@ class AccessController {
     }
     
     static register(req,res) {
-        let dataUser = {
-            username: req.body.username,
-            email: req.body.email,
-            age:req.body.age,
-            password: req.body.password,
-            createdAt:new Date,
-            updatedAt:new Date
-        }
-        User
-        .create(dataUser)
-            .then(() => {
-                // res.send(dataUser)
-                res.redirect('/access/login', {title: "login"})
-            })
-            .catch((err) => {
-                res.send(err)
+        User.isUniqueEmail(req.body.email)
+            .then(data => {
+                if (!data) {
+                    let dataUser = {
+                        username: req.body.username,
+                        email: req.body.email,
+                        age:req.body.age,
+                        password: req.body.password,
+                        createdAt:new Date,
+                        updatedAt:new Date
+                    }
+                    User
+                    .create(dataUser)
+                    .then(() => {
+                        // res.send(dataUser)
+                        res.redirect('/access/login', {title: "login"})
+                    })
+                    .catch((err) => {
+                        res.send(err)
+                    })            
+                } else {
+                res.redirect('/access/register', {title: "register"})
+                }
             })
     }
 

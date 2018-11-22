@@ -1,4 +1,5 @@
 const { ArtistCategory, Artist, Vote } = require('../models')
+const helper = require('../helpers/thanks')
 
 class Voting {
 
@@ -50,7 +51,7 @@ class Voting {
         })
             .then((data) => {
                 // req.flash('success_msg', 'Thank you for voting!')
-                res.redirect(`/voting/chart/${req.params.catId}`, {title: "chart"})
+                res.redirect(`/voting/chart/${req.params.catId}`)
             })
             .catch(err => {
                 res.send(err)
@@ -107,7 +108,7 @@ class Voting {
                         borderWidth: 1
                     }]
                 }
-                res.render('voting/chart.ejs', {data: data, title: "chart"})
+                res.render('voting/chart.ejs', {data: data, greeting: helper})
             })
             .catch(err => {
                 res.send(err)
