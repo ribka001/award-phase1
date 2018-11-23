@@ -1,5 +1,5 @@
-const greeting = () => {    
-    return `Thank you for voting ${req.session.user.username}!`
+const greeting = (value) => {    
+    return `Thank you for voting!`
 }
 
 module.exports = greeting

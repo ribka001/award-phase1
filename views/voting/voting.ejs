@@ -75,7 +75,7 @@
         <tr>    
             <% cat5.forEach(item => { %>
                 <td> 
-                    <form action="/voting/<%= item.id %>" method="post">
+                    <form action="/voting/<%= item.id %>/5" method="post">
                     <button type="submit"><%= item.Artist.name %></button>
                     </form> 
                 </td>
