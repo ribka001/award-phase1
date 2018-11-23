@@ -48,6 +48,10 @@ module.exports = (sequelize, DataTypes) => {
         })
     })
   }
+
+  User.prototype.codeName = function() {
+    return `${this.username} ${this.email}`
+  }
   // User.readEncrypt = function(input,password) {
     // return bcrypt.compareSync(input,password)
   // }

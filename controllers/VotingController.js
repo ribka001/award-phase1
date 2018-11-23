@@ -1,4 +1,4 @@
-const { ArtistCategory, Artist, Vote } = require('../models')
+const { ArtistCategory, Artist, Vote} = require('../models')
 const helper = require('../helpers/thanks')
 
 class Voting {
