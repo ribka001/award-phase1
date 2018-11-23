@@ -48,6 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         })
     })
   }
+<<<<<<< HEAD
 
   User.prototype.codeName = function() {
     return `${this.username} ${this.email}`
@@ -55,5 +56,8 @@ module.exports = (sequelize, DataTypes) => {
   // User.readEncrypt = function(input,password) {
     // return bcrypt.compareSync(input,password)
   // }
+=======
+  
+>>>>>>> fd40794a47017fe944ae0632c61a4f544967811f
   return User;
 };

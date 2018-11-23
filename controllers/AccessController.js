@@ -30,7 +30,7 @@ class AccessController {
                         res.send(err)
                     })            
                 } else {
-                res.redirect('/access/register', {title: "register"})
+                    res.redirect('/access/register', {title: "register"})
                 }
             })
     }
