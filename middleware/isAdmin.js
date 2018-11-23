@@ -6,7 +6,7 @@ function isAdmin(req,res,next) {
             next()
         }
         else {
-        res.redirect('/access/login')
+        res.redirect('/voting')
         }
     }
 }
