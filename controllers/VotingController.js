@@ -45,18 +45,46 @@ class Voting {
     }
 
     static vote(req,res) {
-        
-        Vote.create({
-            UserId: req.session.user.id,
-            ArtistcategoryId: req.params.ArtistCategoryId
+        Vote.findOne({
+            where:{UserId:req.session.user.id},
+            include:[{model:ArtistCategory,where:{CategoryId:req.params.catId}}]
         })
             .then((data) => {
                 // req.flash('success_msg', 'Thank you for voting!')
-                res.redirect(`/voting/chart/${req.params.catId}`)
+                // res.redirect(`/voting/chart/${req.params.catId}`)
+                // res.send(data)
+                if(!data) {
+                    Vote.create({
+                        UserId: req.session.user.id,
+                        ArtistcategoryId: req.params.ArtistCategoryId
+                    })
+                        .then(() => {
+                            // req.flash('success_msg', 'Thank you for voting!')
+                            res.redirect(`/voting/chart/${req.params.catId}`)
+                        })
+                        .catch(err => {
+                        res.send(err)
+                        })
+                } else {
+                    res.redirect('/voting')
+                }
             })
             .catch(err => {
                 res.send(err)
             })
+
+        
+        // Vote.create({
+            // UserId: req.session.user.id,
+            // ArtistcategoryId: req.params.ArtistCategoryId
+        // })
+            // .then((data) => {
+                // req.flash('success_msg', 'Thank you for voting!')
+                // res.redirect(`/voting/chart/${req.params.catId}`)
+            // })
+            // .catch(err => {
+                // res.send(err)
+            // })
     }
 
     static chart(req, res) {

@@ -14,10 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     password:{type:DataTypes.STRING,
       validate:{
-        notNull:{
-          args:true,
-          msg:"must be fill"
-        },
         len:{
           args:[4,10],
           msg:"length beetween 4 and 10"
