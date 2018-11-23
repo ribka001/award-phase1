@@ -48,8 +48,6 @@ module.exports = (sequelize, DataTypes) => {
         })
     })
   }
-  // User.readEncrypt = function(input,password) {
-    // return bcrypt.compareSync(input,password)
-  // }
+  
   return User;
 };
