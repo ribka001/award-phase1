@@ -1,4 +1,4 @@
-const greeting = (value) => {    
+const greeting = () => {    
     return `Thank you for voting!`
 }
 
