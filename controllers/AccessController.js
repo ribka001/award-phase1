@@ -24,7 +24,7 @@ class AccessController {
                     .create(dataUser)
                     .then(() => {
                         // res.send(dataUser)
-                        res.redirect('/access/login', {title: "login"})
+                        res.redirect('/access/login')
                     })
                     .catch((err) => {
                         res.send(err)
