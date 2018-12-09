@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- ini buat diagram chart-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <title>Chart</title>
+</head>
+<body align = center>
+    <canvas id="myChart" width=400> </canvas>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d')
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: <%- JSON.stringify(data) %>
+        });
+    </script>
+    <%= greeting() %>
+    <h3><a href="/">Homepage</a>&nbsp; &nbsp; &nbsp; &nbsp;<a href="/voting">VOTING</a></h1><a href="/voting">Voting</a></h3>
+
+</body>
+</html>
